@@ -3,7 +3,20 @@
 <head>
 <title>Circles</title>
 <script type="text/javascript" src="paper-full.js"></script>
+<script type="text/paperscript" canvas="mycanvas">
+	
+	function onKeyUp(event)
+	{
+		x = Math.floor(Math.random()*1980);
+		y = Math.floor(Math.random()*1020);
+		new Path.Circle(new Point(x,y),10).fillColor="orange";
+	}
+	
+</script>
+<link rel="stylesheet" href="circles.css">
+
 </head>
 <body>
+	<canvas id="mycanvas" resize></canvas>
 </body>
 </html>
