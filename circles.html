@@ -3,14 +3,37 @@
 <head>
 <title>Circles</title>
 <script type="text/javascript" src="paper-full.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.15/howler.js"></script>
 <script type="text/paperscript" canvas="mycanvas">
 	
+	var circles = [];
+	var maxPoint = new Point(view.size.width,view.size.height);
 	function onKeyUp(event)
 	{
-		x = Math.floor(Math.random()*1980);
-		y = Math.floor(Math.random()*1020);
-		new Path.Circle(new Point(x,y),10).fillColor="orange";
+		var randomPoint = Point.random();
+		var point = randomPoint*maxPoint;
+		circle = new Path.Circle(point,500);
+		circles.push(circle);
+		circle.fillColor="orange";
+		
+		//onFrame(event);	
+		
 	}
+	
+	function onFrame(event)
+	{
+		for(var i=0;i<circles.length;i++)
+		{
+			circles[i].fillColor.hue+=1;
+			circles[i].scale(0.9);
+		}
+		
+			
+	}
+	
+	
+	
+	
 	
 </script>
 <link rel="stylesheet" href="circles.css">
