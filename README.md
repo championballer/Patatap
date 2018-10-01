@@ -9,7 +9,7 @@ Just clone the repository and play with it. Cheers. :)
 
 # Adapting
 
-A new sound can easily be add.
+A new sound can be add easily.
 Just append
 
 	key: {
