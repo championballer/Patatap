@@ -7,6 +7,9 @@
 	<link rel="stylesheet" type="text/css" href="circles.css">
 
 	<script type="text/paperscript" canvas="myCanvas">
+		/**
+		* Registers a sound for every valid key
+		*/
 		var keyData = {
 			q: {
 				sound: new Howl({
@@ -167,19 +170,25 @@
 		}
 
 		var circles = [];
-
+		/**
+		* called when someone hit a key
+		*/
 		function onKeyDown(event) {
-			if(keyData[event.key]){
+			if(keyData[event.key]){ // Checks if hit key is valid
 				var maxPoint = new Point(view.size.width, view.size.height);
 				var randomPoint = Point.random();
 				var point = maxPoint * randomPoint;
 				var newCircle = new Path.Circle(point, 500)
 				newCircle.fillColor = keyData[event.key].color;
-				keyData[event.key].sound.play();
-				circles.push(newCircle);
+				keyData[event.key].sound.play(); // play the given sound
+				circles.push(newCircle); // push a new circle to the drawing cue
 			}
 		}
 
+		/**
+		* called every frame.
+		* draws circles
+		*/
 		function onFrame(event){
 			for(var i = 0; i < circles.length; i++){
 				circles[i].fillColor.hue += 1;
