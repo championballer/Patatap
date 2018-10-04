@@ -166,6 +166,30 @@
 		  		urls: ['sounds/moon.mp3']
 				}),
 				color: '#2c3e50'
+			},
+			1: {
+				sound: new Howl({
+		  		urls: ['sounds/sos-morse-code.mp3']
+				}),
+				color: '#2c3e50'
+			},
+			2: {
+				sound: new Howl({
+		  		urls: ['sounds/alien-spaceship.mp3']
+				}),
+				color: '#2c3e50'
+			},
+			3: {
+				sound: new Howl({
+		  		urls: ['sounds/coin-drop.mp3']
+				}),
+				color: '#2c3e50'
+			},
+			4: {
+				sound: new Howl({
+		  		urls: ['sounds/service-bell.mp3']
+				}),
+				color: '#2c3e50'
 			}
 		}
 
@@ -174,12 +198,14 @@
 		* called when someone hit a key
 		*/
 		function onKeyDown(event) {
-			if(keyData[event.key]){ // Checks if hit key is valid
+			if(keyData[event.key]){ 
+				// Checks if hit key is valid
+				console.log('wewee', view.size)
 				var maxPoint = new Point(view.size.width, view.size.height);
 				var randomPoint = Point.random();
 				var point = maxPoint * randomPoint;
-				var newCircle = new Path.Circle(point, 500)
-				newCircle.fillColor = keyData[event.key].color;
+				var newCircle = new Path.Circle(point, Math.random()*1000)
+				newCircle.fillColor = '#'+ Math.floor(Math.random()*16777215).toString(16);
 				keyData[event.key].sound.play(); // play the given sound
 				circles.push(newCircle); // push a new circle to the drawing cue
 			}
